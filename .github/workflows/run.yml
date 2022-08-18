@@ -25,3 +25,5 @@ jobs:
       - name: Run
         run: |
           python main.py
+          docker images
+          docker ps -a

@@ -34,10 +34,10 @@ def main():
     from urllib.parse import quote
 
     image = "python"
-    tag = "sha256:726098870bb14355cb12572764a3be191b42f8b15947d97affe3b8ec6a7a446e"
-    pulled = client.images.pull(image, tag=tag)
-    print(f"{pulled=}")
-    out = run(pulled.tags[0])
+    # tag = "3.8-slim"
+    # pulled = client.images.pull(image)
+    # print(f"{pulled=}")
+    out = run(image)
     print(f"{out.decode()=}")
 
 
