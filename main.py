@@ -24,7 +24,7 @@ def main():
         print("Failed to communicate with the docker client")
         sys.exit(0)
 
-    image = "python"
+    image = "registry.hub.docker.com/library/python"
     try:
         out = run(image)
     except:
