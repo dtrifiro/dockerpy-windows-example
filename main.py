@@ -24,15 +24,13 @@ def main():
         print("Failed to communicate with the docker client")
         sys.exit(0)
 
-    image = "registry.hub.docker.com/library/python"
-    try:
-        out = run(image)
-    except:
-        print("Failed running on first try, pulling...")
-        pulled = client.images.pull(image)
-        print(f"{pulled=}")
-        out = run(image)
+    from urllib.parse import quote
 
+    image = "python"
+    tag = "3.8-slim"
+    pulled = client.images.pull(image, tag=tag)
+    print(f"{pulled=}")
+    out = run(pulled.tags[0])
     print(f"{out.decode()=}")
 
 
