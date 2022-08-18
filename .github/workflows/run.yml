@@ -28,3 +28,5 @@ jobs:
           python main.py
           docker images
           docker ps -a
+          docker pull python:3.9-slim
+          docker images
