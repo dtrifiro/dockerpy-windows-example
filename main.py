@@ -33,8 +33,8 @@ def main():
 
     from urllib.parse import quote
 
-    image = "python"
-    # tag = "3.8-slim"
+    # image = "python"
+    image = "python:3.8-slim"
     # pulled = client.images.pull(image)
     # print(f"{pulled=}")
     out = run(image)
