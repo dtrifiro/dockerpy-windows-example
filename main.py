@@ -39,8 +39,8 @@ def main():
     from urllib.parse import quote
 
     container = client.containers.run(
-        "python",
-        command="python -c 'print(\"hello world\")'",
+        "fsouza/fake-gcs-server",
+        command="echo hello",
         name="testing-python",
         stdout=True,
         stderr=True,
