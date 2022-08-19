@@ -25,4 +25,5 @@ jobs:
           pip install docker>=6.0.0
       - name: Run
         run: |
+          cat 'C:\\Users\\runneradmin\\.docker\\config.json'
           python main.py
