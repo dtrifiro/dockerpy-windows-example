@@ -1,5 +1,6 @@
 import logging
 import sys
+import time
 
 import docker
 
@@ -18,7 +19,7 @@ def run(image: str):
         command="python -c 'print(\"hello\")'",
         stdout=True,
         stderr=True,
-        # detach=True,
+        detach=True,
         remove=True,
     )
 
@@ -33,12 +34,22 @@ def main():
 
     from urllib.parse import quote
 
-    # image = "python"
-    image = "python:3.8-slim"
-    # pulled = client.images.pull(image)
-    # print(f"{pulled=}")
-    out = run(image)
+    container = client.containers.run(
+        "mcr.microsoft.com/azure-storage/azurite",
+        command="azurite-blob --loose --blobHost 0.0.0.0",
+        name="testing-azurite",
+        stdout=True,
+        stderr=True,
+        detach=True,
+        remove=True,
+        ports={f"{10000}/tcp": None},  # assign a random port
+    )
+    time.sleep(5)
+    out = container.logs()
     print(f"{out.decode()=}")
+
+    container.kill()
+    print("killed container")
 
 
 if __name__ == "__main__":
