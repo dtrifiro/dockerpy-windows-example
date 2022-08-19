@@ -10,6 +10,10 @@ requests_log = logging.getLogger("requests.packages.urllib3")
 requests_log.setLevel(logging.DEBUG)
 requests_log.propagate = True
 
+import http.client
+
+http.client.HTTPConnection.debuglevel = 5
+
 client = docker.from_env()
 
 
