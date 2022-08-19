@@ -35,9 +35,8 @@ def main():
     from urllib.parse import quote
 
     container = client.containers.run(
-        "mcr.microsoft.com/azure-storage/azurite",
-        command="azurite-blob --loose --blobHost 0.0.0.0",
-        name="testing-azurite",
+        "fsouza/fake-gcs-server",
+        name="testing-gcs-server",
         stdout=True,
         stderr=True,
         detach=True,
