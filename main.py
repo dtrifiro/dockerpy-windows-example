@@ -35,15 +35,16 @@ def main():
     from urllib.parse import quote
 
     container = client.containers.run(
-        "fsouza/fake-gcs-server",
-        name="testing-gcs-server",
+        "python",
+        command="python -c 'print(\"hello world\")'",
+        name="testing-python",
         stdout=True,
         stderr=True,
         detach=True,
         remove=True,
         ports={f"{10000}/tcp": None},  # assign a random port
     )
-    time.sleep(5)
+    # time.sleep(5)
     out = container.logs()
     print(f"{out.decode()=}")
 
